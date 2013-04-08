@@ -1,14 +1,14 @@
 #!/bin/sh
 
-echo '==> Cloning admk/dotfiles'
+echo '==> Cloning "admk/ko-dot"'
 cd ~
 if [[ -d '.git' || -L '.git' ]]; then
     echo 'Error: directory ".git" exists.'
     echo 'Already installed, abort.'
     exit -1
 fi
-tmp_dir=`mktemp -d /tmp/dotfiles.XXXX`
-git clone --recursive https://github.com/admk/dotfiles.git $tmp_dir 2> /dev/null
+tmp_dir=`mktemp -d /tmp/ko-dot.XXXX`
+git clone -b master --recursive https://github.com/admk/ko-dot.git $tmp_dir 2> /dev/null
 
 echo '==> Installing files'
 cp -r $tmp_dir/. ~
